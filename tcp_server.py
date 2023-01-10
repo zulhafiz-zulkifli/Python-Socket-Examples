@@ -2,7 +2,7 @@
 
 import socket
 
-host = '127.0.0.1'
+host = '192.168.196.135'
 port = 12345
 BUFFER_SIZE = 1024
 
@@ -25,5 +25,6 @@ with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as socket_tcp:
             if not data:
                 break
             else:
-                print('[*] Data received: {}'.format(data.decode('utf-8'))) 
+                print('[*] Data received in string: {}'.format(data.decode('utf-8'))) 
+                print('[*] Data received in bytes: {}'.format(":".join("{:02x}".format(ord(c)) for c in data.decode('utf-8')))) 
             connection.send(data)
